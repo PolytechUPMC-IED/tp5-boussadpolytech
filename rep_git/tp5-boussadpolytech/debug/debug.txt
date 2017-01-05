@@ -1,0 +1,25 @@
+1) compilation de hello.c:
+	gcc -Wall -c hello.c -o hello
+
+
+2) valgrind ./hello : aucun problème
+
+
+On observe l'allocation en mémoire du programme, le free, etc.
+
+3) Mémoire toujours occupée après execution de l'executable.
+   Mémoire totale utilisée et libérée par l'executable
+   Nous dit oui ou non toutes les blocks mémoires sont libérés, et si il y a des fuites mémoires.
+
+5) L'erreur se trouve ligne 6, on a pas de malloc
+
+6) L'erreur est qu'il n'y a pas de malloc pour initialiser le tableau p[] on a rajouté la ligne p=(int *)malloc(size*sizeof(int));
+
+7) Le probleme etait qu'on avait free(p) avant la boucle for qui était commentée alors qu'elle utilisait p.
+
+8) Valgrind nous dit qu'il y a une fuite memoire
+
+9) Pas de ligne
+
+10) Il manquait un free(p) à la fin du programme
+

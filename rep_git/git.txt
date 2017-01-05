@@ -1,0 +1,137 @@
+exercice 1
+
+2) le répertoire créé est ./git qui contient des sous-repertoir
+
+3)creation du ficiher first_file
+
+4)le fichier n'a pas était ajouté dans le projet donc faut faire un git add pour l'ajoute dans le projet (fichier non ajouté)
+
+5) ajout par (git add first_file): le fichier first_file a était ajouté (nouveau fichier : first file)
+
+6) git commit -m "ajout du fichier first-file"
+
+7)(les message suivant sont affichés)   : Sur la branche master
+rien à valider, la copie de travail est propre
+
+
+8)git log -p : affichage de la clé de hashage du commit 
+	l'auteur du commit
+	la date et le message du commit
+
+
+
+9)git diff first_file : montre les modificaion apporter au fichier first_file (affichage des modification)
+
+----------------------------------------------------------
+exercice 2:
+
+1) creation d'une branche test: git branch test
+  git branch: (affiche les branches et sous branche    )
+
+		* master
+		test
+
+
+2) modification du fichier first_file
+
+
+3) git checkout test
+   touch file_branch_test
+   git add file_branch_test
+   git commit -m "ajout du ficiher file_branch_test "
+
+4)git log --graph --decorate --oneline --all 
+	
+	fd4ec0f (HEAD, test) ajout du fichier file_branch_test à la branche test
+	* 823b654 (master) ajout du fichier first_file
+
+
+5)
+	1378a55 (HEAD, test, master) modif first_file et ajout de file_bran_test
+* bcada57 ajout de fichier new file
+* fd4ec0f ajout du fichier file_branch_test à la branche test
+* 823b654 ajout du fichier first_file
+
+(affiche tous les commit sur les deux branch en même temps)
+
+
+7)Already up-to-date.
+
+8 supression de la branche test:	git branch -d test
+
+
+
+------------------------------------------Creer un compte Github------------------
+exercice 3: 
+
+
+
+
+
+
+
+
+------------------------------Makefile--------------------------
+
+exercice 4: un gros projet
+
+
+1)
+
+	CC=gcc
+	CFLAGS= -03 -Wall -funroll-loops
+	LDLIBS= -lpng
+
+
+2) traduction des commande en règle makefile
+	pbm2png: pbm2png.c
+		CC CFLAGS -s pbm2png pbm2png.c -lpng
+
+pbm2eps9.o: pbm2eps9.c
+	
+	$(CC) $(CFLAGS) -c -o pbm2eps9.o pbm2eps9.c
+
+pbm2eps9:  printer.c pbm2eps9.o
+		
+		$(CC) $(CFLAGS) -c -o printer.o printer.c
+		gcc -s -o pbm2eps9 pbm2eps9.o printer.o
+
+
+
+**********) ajout de la regle all
+3)ajout de la regle clean:   rm -f *.o pbm2png pbm2eps9
+
+
+4) 
+*******le makefile avant modification ******
+
+CC=gcc
+CFLAGS= -O3 -Wall -funroll-loops
+LDLIBS= -lpng
+
+
+all:pbm2png pbm2eps9
+
+pbm2png: pbm2png.c
+		$(CC) $(CFLAGS) -s -o  pbm2png pbm2png.c $(LDLIBS)
+
+
+pbm2eps9:  printer.o pbm2eps9.o
+	$(CC) -s -o pbm2eps9 pbm2eps9.o printer.o
+
+printer.o:printer.c
+	$(CC) $(CFLAGS) -c -o printer.o printer.c
+
+pbm2eps9.o: pbm2eps9.c
+	
+	$(CC) $(CFLAGS) -c -o pbm2eps9.o pbm2eps9.c
+
+clean:
+	rm -f *.o pbm2png pbm2eps9
+
+***********************************************************************
+
+
+
+
+
